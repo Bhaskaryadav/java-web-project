@@ -2,8 +2,9 @@ pipeline{
     agent any
     stages{
         stage('Build'){
-            steps{
-                sh "mvn clean package"
+            git url: 'https://github.com/Bhaskaryadav/java-web-project.git'
+            withMaven {
+                sh "mvn clean install"
             }
         }
         stage('Deploy'){
