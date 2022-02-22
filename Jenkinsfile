@@ -1,11 +1,11 @@
 pipeline{
     agent any
     stages{
-        stage('Build'){
+        stage ('Build') {
             git url: 'https://github.com/Bhaskaryadav/java-web-project.git'
             withMaven {
-                sh "mvn clean install"
-            }
+                sh "mvn clean package"
+            } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
         }
         stage('Deploy'){
             steps{
