@@ -1,11 +1,11 @@
 pipeline{
     agent any
     stages{
-        stage('Build'){
-            steps{
-                sh "mvn clean package"
-            }
+        stage('build'){
+        withMaven(maven: 'mvn') {
+            sh "mvn clean package"
         }
+    }
         stage('Deploy'){
             steps{
                 deploy adapters: [tomcat8(credentialsId: 'a8b5e244-a45d-4728-80a9-dd4bc34f3b1d', 
