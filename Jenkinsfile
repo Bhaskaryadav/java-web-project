@@ -3,10 +3,7 @@ pipeline{
     stages{
         stage ('Build') {
             steps{
-                git url: 'https://github.com/Bhaskaryadav/java-web-project.git'
-                withMaven {
-                sh "mvn clean package"
-                } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+                echo "Build Success"
             }
         }
         stage('Deploy'){
